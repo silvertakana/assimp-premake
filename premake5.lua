@@ -2,14 +2,13 @@ project "assimp"
   kind "StaticLib"
   language "C++"
   cppdialect "C++17"
-  staticruntime "on"
 
   targetdir ("bin/" .. outputDir .. "/%{prj.name}")
   objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
 
   defines {
       -- "SWIG",
-      "ASSIMP_BUILD_NO_OWN_ZLIB",
+      --"ASSIMP_BUILD_NO_OWN_ZLIB",
 
       "ASSIMP_BUILD_NO_X_IMPORTER",
       "ASSIMP_BUILD_NO_3DS_IMPORTER",
@@ -50,7 +49,7 @@ project "assimp"
       "ASSIMP_BUILD_NO_NDO_IMPORTER",
       "ASSIMP_BUILD_NO_IFC_IMPORTER",
       "ASSIMP_BUILD_NO_XGL_IMPORTER",
-      "ASSIMP_BUILD_NO_FBX_IMPORTER",
+      --"ASSIMP_BUILD_NO_FBX_IMPORTER",
       "ASSIMP_BUILD_NO_ASSBIN_IMPORTER",
       -- "ASSIMP_BUILD_NO_GLTF_IMPORTER",
       "ASSIMP_BUILD_NO_C4D_IMPORTER",
@@ -131,7 +130,67 @@ project "assimp"
       "code/CalcTangentsProcess.cpp",
       "code/ScaleProcess.cpp",
       "code/EmbedTexturesProcess.cpp",
+
+      "code/FBXAnimation.cpp",
+      "code/FBXBinaryTokenizer.cpp",
+      "code/FBXCommon.h",
+      "code/FBXCompileConfig.h",
+      "code/FBXConverter.cpp",
+      "code/FBXConverter.h",
+      "code/FBXDeformer.cpp",
+      "code/FBXDocument.cpp",
+      "code/FBXDocument.h",
+      "code/FBXDocumentUtil.cpp",
+      "code/FBXDocumentUtil.h",
+      "code/FBXExporter.cpp",
+      "code/FBXExporter.h",
+      "code/FBXExportNode.cpp",
+      "code/FBXExportNode.h",
+      "code/FBXExportProperty.cpp",
+      "code/FBXExportProperty.h",
+      "code/FBXImporter.cpp",
+      "code/FBXImporter.h",
+      "code/FBXImportSettings.h",
+      "code/FBXMaterial.cpp",
+      "code/FBXMeshGeometry.cpp",
+      "code/FBXMeshGeometry.h",
+      "code/FBXModel.cpp",
+      "code/FBXNodeAttribute.cpp",
+      "code/FBXParser.cpp",
+      "code/FBXParser.h",
+      "code/FBXProperties.cpp",
+      "code/FBXProperties.h",
+      "code/FBXTokenizer.cpp",
+      "code/FBXTokenizer.h",
+      "code/FBXUtil.cpp",
+      "code/FBXUtil.h",
+
       "contrib/irrXML/*",
+      "contrib/zlib/adler32.c",
+      "contrib/zlib/compress.c",
+      "contrib/zlib/crc32.c",
+      "contrib/zlib/deflate.c",
+      "contrib/zlib/gzclose.c",
+      "contrib/zlib/gzlib.c",
+      "contrib/zlib/gzread.c",
+      "contrib/zlib/gzwrite.c",
+      "contrib/zlib/inflate.c",
+      "contrib/zlib/infback.c",
+      "contrib/zlib/inftrees.c",
+      "contrib/zlib/inffast.c",
+      "contrib/zlib/trees.c",
+      "contrib/zlib/uncompr.c",
+      "contrib/zlib/zutil.c",
+      "contrib/zlib/crc32.h",
+      "contrib/zlib/deflate.h",
+      "contrib/zlib/gzguts.h",
+      "contrib/zlib/inffast.h",
+      "contrib/zlib/inffixed.h",
+      "contrib/zlib/inflate.h",
+      "contrib/zlib/inftrees.h",
+      "contrib/zlib/trees.h",
+      "contrib/zlib/zutil.h",
+      "contrib/zlib/zlib.h"      
   }
 
   includedirs {
@@ -144,6 +203,7 @@ project "assimp"
 
    filter "system:windows"
       systemversion "latest"
+      staticruntime "on"
 
    filter  "configurations:Debug"
        runtime "Debug"
