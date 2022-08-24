@@ -1,7 +1,6 @@
 project "assimp"
 	kind "StaticLib"
 	language "C++"
-	staticruntime "On"
 
 	targetdir (outputOrigin .."/bin/" .. outputdir .. "/%{prj.name}")
 	objdir (outputOrigin .."/bin-int/" .. outputdir .. "/%{prj.name}")
@@ -200,18 +199,23 @@ project "assimp"
 	}
 
 
-    filter "system:windows"
-        systemversion "latest"
-    
-    filter "configurations:Debug"
-        runtime "Debug"
-        buildoptions "/MDd"
-        symbols "On"
-        
-    filter "configurations:Release"
-        runtime "Release"
-        optimize "On"
-        
+	filter "system:windows"
+		systemversion "latest"
+
+	filter "system:linux"
+		pic "On"
+		systemversion "latest"
+
+	filter "configurations:Debug"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		runtime "Release"
+		optimize "on"
+
     filter "configurations:Dist"
-        runtime "Release"
-        optimize "On"
+		runtime "Release"
+		optimize "on"
+        symbols "off"
+
